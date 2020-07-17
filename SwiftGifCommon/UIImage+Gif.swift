@@ -60,9 +60,8 @@ extension UIImage {
         return gif(data: imageData)
     }
 
-    public class func gif(name: String) -> UIImage? {
-        // Check for existance of gif
-        guard let bundleURL = Bundle.main
+    public class func gif(name: String, bundle: Bundle) -> UIImage? {
+        guard let bundleURL = bundle
           .url(forResource: name, withExtension: "gif") else {
             print("SwiftGif: This image named \"\(name)\" does not exist")
             return nil
@@ -75,6 +74,10 @@ extension UIImage {
         }
 
         return gif(data: imageData)
+    }
+    
+    public class func gif(name: String) -> UIImage? {
+        return gif(name: name, bundle: Bundle.main)
     }
 
     @available(iOS 9.0, *)
